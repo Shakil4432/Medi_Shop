@@ -2,12 +2,14 @@ import React from "react";
 import { FaAngleDown, FaShoppingCart } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
-import logo from "../../../assets/logo.png";
+import useAuth from "../../Hooks/useAuth/useAuth";
 
 export default function Navbar() {
+  const { user, logOut } = useAuth();
+
   return (
-    <div className="max-w-screen-2xl mx-auto bg-[#0A9A73]">
-      <div className="navbar">
+    <div className="max-w-screen-xl mx-auto bg-[#16A085] fixed z-10">
+      <div className="navbar fixed z-10 max-w-screen-xl bg-[#16A085]">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -80,9 +82,9 @@ export default function Navbar() {
           </div>
           <Link
             to="/"
-            className="  bg-[#0A9A73] border-none  text-white font-bold text-xl"
+            className="  bg-[#16A085] border-none  text-white font-bold text-xl"
           >
-            <span className="text-2xl p-2 rounded-full bg-gray-100 text-[#0A9A73]">
+            <span className="text-2xl p-2 rounded-full bg-gray-100 text-[#16A085]">
               BD
             </span>
             PHARMA
@@ -112,7 +114,7 @@ export default function Navbar() {
                 className={({ isActive }) => (isActive ? "active-link" : "")}
               >
                 <FaShoppingCart />
-                <div className="badge bg-[#0A9A73] border-none text-white -top-2 right-0 absolute">
+                <div className="badge bg-[#0A9A73] text-red-300 border-none  -top-2 right-0 absolute">
                   0
                 </div>
               </NavLink>
@@ -150,9 +152,45 @@ export default function Navbar() {
               </li>
             </ul>
           </div>
-          <Link to="/signIn">
-            <button className="btn">Join Us</button>
-          </Link>
+          {user ? (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    src={
+                      user?.photoURL ||
+                      "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                    }
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <a className="justify-between">Update Profile</a>
+                </li>
+                <li>
+                  <Link to="/dashboard">Dashboard</Link>
+                </li>
+                <li>
+                  <button onClick={() => logOut()} className="btn btn-sm">
+                    Logout
+                  </button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            <Link to="/signIn">
+              <button className="btn">Join Us</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>
