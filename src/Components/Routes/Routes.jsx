@@ -7,6 +7,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import Users from "../Pages/Dashboard/Users/Users";
 import Category from "../Pages/Dashboard/Category/Category";
 import ManageSellerMedicine from "../Pages/Dashboard/ManageSellerMedicine/ManageSellerMedicine";
+import TableByCategory from "../Pages/Home/TableByCategory/TableByCategory";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path: "/signUp",
         element: <SignUp></SignUp>,
+      },
+      {
+        path: "/spacific-category/:name",
+        element: <TableByCategory />,
       },
     ],
   },
