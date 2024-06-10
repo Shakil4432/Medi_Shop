@@ -3,9 +3,15 @@ import { FaAngleDown, FaShoppingCart } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import useAuth from "../../Hooks/useAuth/useAuth";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
+import useCarts from "../../Hooks/useCarts/useCarts";
 
 export default function Navbar() {
   const { user, logOut } = useAuth();
+  const [carts] = useCarts();
+
+  console.log(carts);
 
   return (
     <div className="max-w-screen-xl mx-auto bg-[#16A085] fixed z-10">
@@ -115,7 +121,7 @@ export default function Navbar() {
               >
                 <FaShoppingCart />
                 <div className="badge bg-[#0A9A73] text-red-300 border-none  -top-2 right-0 absolute">
-                  0
+                  {carts.length}
                 </div>
               </NavLink>
             </li>

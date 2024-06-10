@@ -8,6 +8,8 @@ import Users from "../Pages/Dashboard/Users/Users";
 import Category from "../Pages/Dashboard/Category/Category";
 import ManageSellerMedicine from "../Pages/Dashboard/ManageSellerMedicine/ManageSellerMedicine";
 import TableByCategory from "../Pages/Home/TableByCategory/TableByCategory";
+import Carts from "../Pages/Carts/Carts";
+import AdminRoutes from "./AdminRoutes/AdminRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -30,6 +32,10 @@ export const router = createBrowserRouter([
         path: "/spacific-category/:name",
         element: <TableByCategory />,
       },
+      {
+        path: "/cart",
+        element: <Carts />,
+      },
     ],
   },
   {
@@ -38,11 +44,19 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "users",
-        element: <Users></Users>,
+        element: (
+          <AdminRoutes>
+            <Users></Users>
+          </AdminRoutes>
+        ),
       },
       {
         path: "category",
-        element: <Category></Category>,
+        element: (
+          <AdminRoutes>
+            <Category></Category>
+          </AdminRoutes>
+        ),
       },
       {
         path: "manageMedicines",

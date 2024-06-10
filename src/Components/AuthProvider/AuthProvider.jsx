@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
 import auth from "../../Firebase/firebase.config";
+import { BounceLoader } from "react-spinners";
 export const authContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
 export default function AuthProvider({ children }) {
@@ -60,6 +61,20 @@ export default function AuthProvider({ children }) {
     updateUserProfile,
   };
   return (
-    <authContext.Provider value={allInfo}>{children}</authContext.Provider>
+    <authContext.Provider value={allInfo}>
+      {loading ? (
+        <div className="flex justify-center items-center h-[100vh]">
+          <BounceLoader
+            loading={loading}
+            color="#16A085"
+            size={50}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+          />
+        </div>
+      ) : (
+        children
+      )}
+    </authContext.Provider>
   );
 }

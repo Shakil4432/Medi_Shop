@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 import DetailsModal from "../../Dashboard/Modal/DetailsModal";
+import useCarts from "../../../Hooks/useCarts/useCarts";
+import Swal from "sweetalert2";
 
 export default function TableByCategory() {
   const { name } = useParams();
@@ -10,7 +12,7 @@ export default function TableByCategory() {
 
   const [details, setDetails] = useState(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
-
+  const [, refetch] = useCarts();
   const { data: items = [] } = useQuery({
     queryKey: ["items"],
     queryFn: async () => {
@@ -18,6 +20,26 @@ export default function TableByCategory() {
       return result.data;
     },
   });
+
+  const handleItem = (data) => {
+    const newData = {
+      name: data.name,
+      company: data.manufacturer,
+      price: data.price,
+      quantity: data.quantity,
+    };
+
+    axiosSecure.post("/addToCart", newData).then((res) => {
+      if (res.data.insertedId) {
+        refetch();
+        Swal.fire({
+          title: "Deleted!",
+          text: `${data.name} added to the cart`,
+          icon: "success",
+        });
+      }
+    });
+  };
 
   const openFormModal = (item = null) => {
     setDetails(item);
@@ -70,7 +92,10 @@ export default function TableByCategory() {
                       </button>
                     </td>
                     <td>
-                      <button className="btn btn-sm bg-orange-400 text-white">
+                      <button
+                        onClick={() => handleItem(item)}
+                        className="btn btn-sm bg-orange-400 text-white"
+                      >
                         Add To Cart
                       </button>
                     </td>
