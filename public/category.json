@@ -12,7 +12,8 @@
     "price": 4.99,
     "category": "Analgesic",
     "discount": "10%",
-    "image": "https://i.ibb.co/PFDm5bt/pngegg-27.png"
+    "image": "https://i.ibb.co/PFDm5bt/pngegg-27.png",
+    "description": "Paracetamol, also known as Acetaminophen, is a common analgesic used for pain relief and reducing fever. Available in tablet, liquid, and capsule forms, it comes in strengths of 500mg and 650mg. While generally safe, it can cause nausea, rash, and liver damage in rare cases."
   },
   {
     "id": 2,
@@ -26,7 +27,8 @@
     "manufacturer": "XYZ Pharmaceuticals",
     "price": 7.49,
     "category": "Nonsteroidal Anti-inflammatory Drug (NSAID)",
-    "image": "https://i.ibb.co/yB5nnYJ/pngfind-com-advil-png-4748126.png"
+    "image": "https://i.ibb.co/yB5nnYJ/pngfind-com-advil-png-4748126.png",
+    "description": "Ibuprofen is a widely used NSAID that helps relieve pain, reduce inflammation, and lower fever. It is available in tablet, liquid, and gel forms with strengths ranging from 200mg to 600mg. Common side effects include stomach pain, dizziness, and potential kidney damage."
   },
   {
     "id": 3,
@@ -41,7 +43,8 @@
     "price": 12.99,
     "category": "Antibiotic",
     "discount": "15%",
-    "image": "https://i.ibb.co/k95K41q/pngwing-com-4.png"
+    "image": "https://i.ibb.co/k95K41q/pngwing-com-4.png",
+    "description": "Amoxicillin is an antibiotic effective against various bacterial infections. Available in capsule and liquid forms with strengths of 250mg and 500mg, it is commonly used but can cause side effects such as diarrhea, nausea, and allergic reactions."
   },
   {
     "id": 4,
@@ -55,7 +58,8 @@
     "manufacturer": "PharmaGroup",
     "price": 9.99,
     "category": "Antihypertensive",
-    "image": "https://i.ibb.co/mqmqT5m/pngwing-com-5.png"
+    "image": "https://i.ibb.co/mqmqT5m/pngwing-com-5.png",
+    "description": "Lisinopril is an antihypertensive medication used to manage high blood pressure and heart failure. Available in tablet form with strengths of 10mg and 20mg, it may cause side effects like cough, dizziness, and headache."
   },
   {
     "id": 5,
@@ -69,7 +73,8 @@
     "manufacturer": "MedLife",
     "price": 5.99,
     "category": "Antidiabetic",
-    "image": "https://i.ibb.co/MMGY5JH/pngwing-com-6.png"
+    "image": "https://i.ibb.co/MMGY5JH/pngwing-com-6.png",
+    "description": "Metformin is an antidiabetic medication used to treat type 2 diabetes. It is available in standard and extended-release tablets with strengths of 500mg and 1000mg. Common side effects include nausea, vomiting, and diarrhea."
   },
   {
     "id": 6,
@@ -84,7 +89,8 @@
     "price": 8.99,
     "category": "Statin",
     "discount": "20%",
-    "image": "https://i.ibb.co/6JzKQXh/pngwing-com-7.png"
+    "image": "https://i.ibb.co/6JzKQXh/pngwing-com-7.png",
+    "description": "Simvastatin is a statin used to manage high cholesterol levels. It is available in tablet form with strengths of 10mg, 20mg, and 40mg. Potential side effects include headache, nausea, and muscle pain."
   },
   {
     "id": 7,
@@ -98,7 +104,8 @@
     "manufacturer": "GastroHealth",
     "price": 10.99,
     "category": "Proton Pump Inhibitor",
-    "image": "https://i.ibb.co/WHCD1hL/pngwing-com-8.png"
+    "image": "https://i.ibb.co/WHCD1hL/pngwing-com-8.png",
+    "description": "Omeprazole is a proton pump inhibitor used to treat acid reflux and GERD. Available in capsule and tablet forms with strengths of 20mg and 40mg, it can cause side effects such as headache, stomach pain, and diarrhea."
   },
   {
     "id": 8,
@@ -112,7 +119,8 @@
     "manufacturer": "Thyroid Health Co.",
     "price": 11.49,
     "category": "Thyroid Hormone",
-    "image": "https://i.ibb.co/J3w1nsp/pngegg-28.png"
+    "image": "https://i.ibb.co/J3w1nsp/pngegg-28.png",
+    "description": "Levothyroxine is a thyroid hormone used to treat hypothyroidism. It is available in tablet form with strengths ranging from 25mcg to 100mcg. Possible side effects include weight loss, insomnia, and irregular heartbeat."
   },
   {
     "id": 9,
@@ -126,7 +134,8 @@
     "manufacturer": "Anticoag Inc.",
     "price": 8.99,
     "category": "Anticoagulant",
-    "image": "https://i.ibb.co/Yp6FMxh/pngegg-29.png"
+    "image": "https://i.ibb.co/Yp6FMxh/pngegg-29.png",
+    "description": "Warfarin is an anticoagulant, or blood thinner, used to prevent blood clots. Available in tablet form with strengths of 2.5mg, 5mg, and 10mg, it can cause side effects such as bleeding, bruising, and nausea."
   },
   {
     "id": 10,
@@ -140,7 +149,8 @@
     "manufacturer": "NeuroPharm",
     "price": 16.99,
     "category": "Anticonvulsant",
-    "image": "https://i.ibb.co/3S7tKSG/pngegg-30.png"
+    "image": "https://i.ibb.co/3S7tKSG/pngegg-30.png",
+    "description": "Gabapentin is an anticonvulsant used to treat nerve pain and seizures. Available in capsule and tablet forms with strengths of 100mg and 300mg, it may cause side effects such as dizziness, fatigue, and weight gain."
   },
   {
     "id": 11,
@@ -154,7 +164,8 @@
     "manufacturer": "CardioHealth",
     "price": 6.99,
     "category": "Beta Blocker",
-    "image": "https://i.ibb.co/RgthVQf/pngegg-31.png"
+    "image": "https://i.ibb.co/RgthVQf/pngegg-31.png",
+    "description": "Atenolol is a beta blocker used to manage high blood pressure and angina. Available in tablet form with strengths of 25mg, 50mg, and 100mg, it can cause side effects such as dizziness, fatigue, and cold hands."
   },
   {
     "id": 12,
@@ -168,6 +179,7 @@
     "manufacturer": "Antibiotic Pharma",
     "price": 14.99,
     "category": "Antibiotic",
-    "image": "https://i.ibb.co/vx7Nvv5/pngwing-com-9.png"
+    "image": "https://i.ibb.co/vx7Nvv5/pngwing-com-9.png",
+    "description": "Ciprofloxacin is an antibiotic used to treat various bacterial infections. It is available in tablet and liquid forms with strengths of 250mg and 500mg. Common side effects include nausea, diarrhea, and dizziness."
   }
 ]

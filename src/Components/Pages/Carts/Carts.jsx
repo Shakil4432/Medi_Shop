@@ -1,7 +1,7 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import React from "react";
 import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Carts() {
   const axiosSecure = useAxiosSecure();
@@ -125,12 +125,14 @@ export default function Carts() {
             >
               Clear Cart
             </button>
-            <button
-              className="btn btn-sm bg-blue-500 text-white"
-              onClick={handleCheckout}
-            >
-              Checkout
-            </button>
+            <Link to="/cheakOut">
+              <button
+                className="btn btn-sm bg-blue-500 text-white"
+                onClick={handleCheckout}
+              >
+                Checkout
+              </button>
+            </Link>
           </div>
         </div>
       </div>

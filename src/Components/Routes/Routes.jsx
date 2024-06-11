@@ -10,6 +10,10 @@ import ManageSellerMedicine from "../Pages/Dashboard/ManageSellerMedicine/Manage
 import TableByCategory from "../Pages/Home/TableByCategory/TableByCategory";
 import Carts from "../Pages/Carts/Carts";
 import AdminRoutes from "./AdminRoutes/AdminRoutes";
+import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
+import Shop from "../Pages/Shop/Shop";
+import CheckoutPage from "../Pages/Dashboard/Payment/CheckoutPage";
+import InvoicePage from "../Pages/Dashboard/Payment/InvoicePage";
 
 export const router = createBrowserRouter([
   {
@@ -33,14 +37,34 @@ export const router = createBrowserRouter([
         element: <TableByCategory />,
       },
       {
+        path: "/shop",
+        element: <Shop />,
+      },
+      {
+        path: "/cheakOut",
+        element: <CheckoutPage />,
+      },
+      {
+        path: "/invoice",
+        element: <InvoicePage />,
+      },
+      {
         path: "/cart",
-        element: <Carts />,
+        element: (
+          <PrivateRoutes>
+            <Carts />
+          </PrivateRoutes>
+        ),
       },
     ],
   },
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: (
+      <PrivateRoutes>
+        <Dashboard></Dashboard>
+      </PrivateRoutes>
+    ),
     children: [
       {
         path: "users",
