@@ -3,8 +3,7 @@ import { FaAngleDown, FaShoppingCart } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import "./Navbar.css";
 import useAuth from "../../Hooks/useAuth/useAuth";
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../Hooks/useAxiosSecure/useAxiosSecure";
+
 import useCarts from "../../Hooks/useCarts/useCarts";
 
 export default function Navbar() {
@@ -36,7 +35,7 @@ export default function Navbar() {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 font-semibold text-gray-50 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 font-semibold bg-[#16A085] text-gray-50 z-[1] p-2 shadow rounded-box w-52"
             >
               <li>
                 <NavLink
@@ -52,6 +51,17 @@ export default function Navbar() {
                   className={({ isActive }) => (isActive ? "active-link" : "")}
                 >
                   Shop
+                </NavLink>
+              </li>
+              <li className="mt-1 relative">
+                <NavLink
+                  to="/cart"
+                  className={({ isActive }) => (isActive ? "active-link" : "")}
+                >
+                  <FaShoppingCart />
+                  <div className="badge bg-[#0A9A73] text-red-300 border-none  lg:-top-2 lg:right-0 lg:absolute">
+                    {carts.length}
+                  </div>
                 </NavLink>
               </li>
               <li>
@@ -120,7 +130,7 @@ export default function Navbar() {
                 className={({ isActive }) => (isActive ? "active-link" : "")}
               >
                 <FaShoppingCart />
-                <div className="badge bg-[#0A9A73] text-red-300 border-none  -top-2 right-0 absolute">
+                <div className="badge bg-[#0A9A73] text-red-300 border-none  lg:-top-2 lg:right-0 lg:absolute">
                   {carts.length}
                 </div>
               </NavLink>

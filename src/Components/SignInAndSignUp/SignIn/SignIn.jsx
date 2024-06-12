@@ -38,11 +38,13 @@ export default function SignIn() {
             role: "user",
           };
 
-          axios.post("http://localhost:5000/users", userInfo).then((res) => {
-            console.log(res.data);
-            toast.success("SignIn Successfull");
-            navigate(from);
-          });
+          axios
+            .post("https://a9b12-server-side.vercel.app/users", userInfo)
+            .then((res) => {
+              console.log(res.data);
+              toast.success("SignIn Successfull");
+              navigate(from);
+            });
         }
       })
       .catch((error) => {

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 const axiosSecure = axios.create({
-  baseURL: "http://localhost:5000/",
+  baseURL: "https://a9b12-server-side.vercel.app/",
 });
 export default function useAxiosSecure() {
   return axiosSecure;

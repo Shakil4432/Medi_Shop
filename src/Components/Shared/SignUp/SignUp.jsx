@@ -50,7 +50,10 @@ export default function SignUp() {
             return updateUserProfile(name, data.data?.display_url);
           })
           .then(() => {
-            return axios.post("http://localhost:5000/users", user);
+            return axios.post(
+              "https://a9b12-server-side.vercel.app/users",
+              user
+            );
           })
           .then((res) => {
             console.log(res.data);
