@@ -33,7 +33,7 @@ export default function TableByCategory() {
       if (res.data.insertedId) {
         refetch();
         Swal.fire({
-          title: "Deleted!",
+          title: "Success!",
           text: `${data.name} added to the cart`,
           icon: "success",
         });

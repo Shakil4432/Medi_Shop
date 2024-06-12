@@ -35,6 +35,7 @@ export default function SignIn() {
           const userInfo = {
             name: result.user?.displayName,
             email: result.user?.email,
+            role: "user",
           };
 
           axios.post("http://localhost:5000/users", userInfo).then((res) => {

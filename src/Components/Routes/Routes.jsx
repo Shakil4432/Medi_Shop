@@ -14,6 +14,8 @@ import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import Shop from "../Pages/Shop/Shop";
 import CheckoutPage from "../Pages/Dashboard/Payment/CheckoutPage";
 import InvoicePage from "../Pages/Dashboard/Payment/InvoicePage";
+import PaymentManagement from "../Pages/Dashboard/PaymentManagement/PaymentManagement";
+import SalesRevenue from "../Pages/Dashboard/SalesRevenue/SalesRevenue";
 
 export const router = createBrowserRouter([
   {
@@ -42,7 +44,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/cheakOut",
-        element: <CheckoutPage />,
+        element: (
+          <PrivateRoutes>
+            <CheckoutPage />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/invoice",
@@ -85,6 +91,22 @@ export const router = createBrowserRouter([
       {
         path: "manageMedicines",
         element: <ManageSellerMedicine></ManageSellerMedicine>,
+      },
+      {
+        path: "paymentManagement",
+        element: (
+          <AdminRoutes>
+            <PaymentManagement></PaymentManagement>
+          </AdminRoutes>
+        ),
+      },
+      {
+        path: "adminHome",
+        element: (
+          <AdminRoutes>
+            <SalesRevenue></SalesRevenue>
+          </AdminRoutes>
+        ),
       },
     ],
   },

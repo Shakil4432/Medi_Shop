@@ -1,45 +1,41 @@
-import React, { useRef } from "react";
-
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { useReactToPrint } from "react-to-print";
+
 import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 import { Link } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth/useAuth";
 
-const InvoicePage = () => {
+const PaymentManagement = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const { data: payments = [] } = useQuery({
-    queryKey: ["payments"],
+  const { data: payments = [], refetch } = useQuery({
+    queryKey: ["payment"],
     queryFn: async () => {
-      const res = await axiosSecure.get(`/payments/${user.email}`);
+      const res = await axiosSecure.get("/payments");
       return res.data;
     },
   });
   console.log(payments);
 
-  const componentRef = useRef();
-
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-  });
+  const handleStatus = (id) => {
+    axiosSecure
+      .patch(`/payments/${id}`)
+      .then((res) => {
+        refetch();
+        console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
 
   return (
-    <div className="pt-36 max-w-screen-md mx-auto">
-      <div ref={componentRef}>
+    <div className=" max-w-screen-lg mx-auto mt-12">
+      <div>
         <div className="border-b border-r border-l">
-          <div className="flex flex-col justify-evenly my-6">
-            <Link
-              to="/"
-              className=" text-center -mt-2 rounded-md bg-[#16A085] border-none  text-white font-bold text-xl"
-            >
-              <span className="text-2xl p-2 rounded-full bg-gray-100 text-[#16A085]">
-                BD
-              </span>
-              PHARMA
-            </Link>
+          <div className="flex flex-col justify-evenly ">
             <h2 className="text-3xl py-6 rounded-md text-center text-white font-bold w-full bg-[#169F84]">
-              User Email: {user.email}
+              Users Payment
             </h2>
           </div>
           <div className="overflow-x-auto">
@@ -48,8 +44,9 @@ const InvoicePage = () => {
                 <tr className="text-lg">
                   <th>Serial</th>
                   <th>Paid Amount</th>
-                  <th>TransactionId</th>
                   <th>Date</th>
+                  <th>Status</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -57,8 +54,25 @@ const InvoicePage = () => {
                   <tr key={payment._id}>
                     <th>{index + 1}</th>
                     <td>{payment.price} TK</td>
-                    <td>{payment.transactionId}</td>
+
                     <td>{new Date(payment.date).toLocaleString()}</td>
+                    <td
+                      className={`${
+                        payment.status === "pending"
+                          ? "text-orange-300"
+                          : "text-green-500"
+                      } `}
+                    >
+                      {payment.status}
+                    </td>
+                    <td>
+                      <button
+                        onClick={() => handleStatus(payment._id)}
+                        className="btn btn-sm btn-outline"
+                      >
+                        Accept
+                      </button>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -66,11 +80,8 @@ const InvoicePage = () => {
           </div>
         </div>
       </div>
-      <button onClick={handlePrint} className="btn btn-primary mt-4">
-        Print Invoice
-      </button>
     </div>
   );
 };
 
-export default InvoicePage;
+export default PaymentManagement;
