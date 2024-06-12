@@ -1,40 +1,25 @@
 import React from "react";
+import useAuth from "../../../Hooks/useAuth/useAuth";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 
-import useAxiosSecure from "../../../Hooks/useAxiosSecure/useAxiosSecure";
-import useAuth from "../../../Hooks/useAuth/useAuth";
-
-const PaymentManagement = () => {
+export default function PaymentHistory() {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const { data: payments = [], refetch } = useQuery({
     queryKey: ["payment"],
     queryFn: async () => {
-      const res = await axiosSecure.get("/payments");
+      const res = await axiosSecure.get(`/payments/${user?.email}`);
       return res.data;
     },
   });
-  console.log(payments);
-
-  const handleStatus = (id) => {
-    axiosSecure
-      .patch(`/payments/${id}`)
-      .then((res) => {
-        refetch();
-        console.log(res.data);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
-
   return (
     <div className=" max-w-screen-lg mx-auto mt-12">
       <div>
         <div className="border-b border-r border-l">
           <div className="flex flex-col justify-evenly ">
             <h2 className="text-3xl py-6 rounded-md text-center text-white font-bold w-full bg-[#169F84]">
-              Users Payment
+              Payment History
             </h2>
           </div>
           <div className="overflow-x-auto">
@@ -43,9 +28,8 @@ const PaymentManagement = () => {
                 <tr className="text-lg">
                   <th>Serial</th>
                   <th>Paid Amount</th>
+                  <th>TransactionID</th>
                   <th>Date</th>
-                  <th>Status</th>
-                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -53,25 +37,8 @@ const PaymentManagement = () => {
                   <tr key={payment._id}>
                     <th>{index + 1}</th>
                     <td>{payment.price} TK</td>
-
+                    <td>{payment.transactionId}</td>
                     <td>{new Date(payment.date).toLocaleString()}</td>
-                    <td
-                      className={`${
-                        payment.status === "pending"
-                          ? "text-orange-300"
-                          : "text-green-500"
-                      } `}
-                    >
-                      {payment.status}
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => handleStatus(payment._id)}
-                        className="btn btn-sm btn-outline"
-                      >
-                        Accept
-                      </button>
-                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -81,6 +48,4 @@ const PaymentManagement = () => {
       </div>
     </div>
   );
-};
-
-export default PaymentManagement;
+}

@@ -16,11 +16,14 @@ import CheckoutPage from "../Pages/Dashboard/Payment/CheckoutPage";
 import InvoicePage from "../Pages/Dashboard/Payment/InvoicePage";
 import PaymentManagement from "../Pages/Dashboard/PaymentManagement/PaymentManagement";
 import SalesRevenue from "../Pages/Dashboard/SalesRevenue/SalesRevenue";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
+import NotFound from "../Shared/NotFound/NotFound";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <NotFound></NotFound>,
     children: [
       {
         path: "/",
@@ -106,6 +109,14 @@ export const router = createBrowserRouter([
           <AdminRoutes>
             <SalesRevenue></SalesRevenue>
           </AdminRoutes>
+        ),
+      },
+      {
+        path: "paymentHistory",
+        element: (
+          <PrivateRoutes>
+            <PaymentHistory></PaymentHistory>
+          </PrivateRoutes>
         ),
       },
     ],

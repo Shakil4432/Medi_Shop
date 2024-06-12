@@ -8,15 +8,16 @@ import useUser from "../../Hooks/useUser/useUser";
 
 export default function Dashboard() {
   const [isAdmin] = useAdmin();
-  const [isUser] = useUser();
-  console.log(isUser);
+  console.log(isAdmin);
+  // const [isUser] = useUser();
+  // console.log(isUser);
 
   return (
     <div className="grid  grid-cols-8 justify-center   gap-4 mr-20 min-h-screen">
-      {isAdmin && <AdminDashBoard></AdminDashBoard>}
-      {!isUser && <UserDashBoard></UserDashBoard>}
+      {isAdmin.admin && <AdminDashBoard></AdminDashBoard>}
+      {isAdmin.users && <UserDashBoard></UserDashBoard>}
 
-      {!isAdmin && isUser && <SellerDashBoard></SellerDashBoard>}
+      {isAdmin.seller && <SellerDashBoard></SellerDashBoard>}
 
       <div className="col-span-6 ml-36">
         <Outlet></Outlet>

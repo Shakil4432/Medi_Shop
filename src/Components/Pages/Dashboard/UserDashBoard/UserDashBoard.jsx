@@ -17,7 +17,7 @@ export default function UserDashBoard() {
         <div className="flex flex-col justify-between flex-1 mt-6">
           <nav className="-mx-3 space-y-3 ">
             <NavLink
-              to="/dashboard"
+              to="/dashboard/paymentHistory"
               className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-200 hover:text-gray-700"
               href="#"
             >
