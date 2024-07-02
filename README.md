@@ -20,3 +20,18 @@ MediShop is a comprehensive multi-vendor e-commerce platform designed to address
    ```bash
    git clone https://github.com/yourusername/medishop.git
    cd medishop
+2.Install dependencies for both client and server:
+    cd client
+    npm install
+    cd ../server
+    npm install
+3.Set up environment variables:
+  Create a .env file in the server directory with Firebase config keys and MongoDB credentials.
+4.Run the client and server:
+  cd client
+  npm run dev
+  cd ../server
+  nodemon index.js
+5.Access the application:
+  Open your browser and navigate to http://localhost:3000 for the client side.
+
