@@ -12,7 +12,7 @@ MediShop is a comprehensive multi-vendor e-commerce platform designed to address
 - **Frontend:** React.js, Tailwind CSS
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
-- **Authentication:** Firebase, JWT
+- **Authentication:** Firebase
 - **Other:** Tanstack Query, Stripe for payments
 
 ## Steps to Clone and Run Locally
