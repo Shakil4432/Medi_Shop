@@ -1,4 +1,6 @@
 # MediShop
+## Live Site URL
+Visit [MediShop Live](https://medicine-shop-auth.web.app/) to explore the platform.
 
 ## Project Overview
 MediShop is a comprehensive multi-vendor e-commerce platform designed to address the challenges of purchasing medicines and healthcare products online. It provides a seamless user experience for buying medications, submitting queries, and receiving expert advice.
